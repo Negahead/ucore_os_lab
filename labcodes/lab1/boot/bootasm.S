@@ -48,8 +48,8 @@ seta20.2:
     # effective memory map does not change during the switch.
     lgdt gdtdesc
     movl %cr0, %eax
-    orl $CR0_PE_ON, %eax
-    movl %eax, %cr0
+    orl $CR0_PE_ON, %eax                            # 1x | eax -> eax
+    movl %eax, %cr0                                 # switch paging on or off
 
     # Jump to next instruction, but in 32-bit code segment.
     # Switches processor into 32-bit mode.
